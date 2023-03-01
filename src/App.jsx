@@ -1,34 +1,81 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import { db } from "./firebase";
+import {
+	collection,
+	getDocs,
+	addDoc,
+	onSnapshot,
+	serverTimestamp,
+	orderBy,
+	query,
+} from "firebase/firestore";
 
 function App() {
-  const [count, setCount] = useState(0)
+	const [todos, setTodos] = useState([]);
+	const [input, setInput] = useState("");
 
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+	const addTodo = (event) => {
+		event.preventDefault();
+
+		addDoc(collection(db, "todos"), {
+			todo: input,
+			timestamp: serverTimestamp(),
+			completed: false,
+		});
+
+		setInput("");
+	};
+
+	useEffect(() => {
+		const sortedTodos = query(
+			collection(db, "todos"),
+			orderBy("timestamp", "desc")
+		);
+
+		const unsubscribe = onSnapshot(sortedTodos, (snapshot) => {
+			setTodos(
+				snapshot.docs.map((doc) => ({
+					id: doc.id,
+					todo: doc.data().todo,
+					completed: doc.data().completed,
+				}))
+			);
+		});
+
+		return unsubscribe;
+	}, []);
+
+	return (
+		<div>
+			<form>
+				<input
+					value={input}
+					onChange={(event) => setInput(event.target.value)}
+				/>
+				<button type="submit" onClick={addTodo}>
+					Add Todo
+				</button>
+			</form>
+
+			<ul>
+				{todos.map((todo) => (
+					<li key={todo.id}>
+						<input
+							type="checkbox"
+							checked={todo.completed}
+							onChange={() => toggleComplete(todo.id, todo.completed)}
+						/>
+						{todo.todo}
+					</li>
+				))}
+			</ul>
+		</div>
+	);
+}
+async function toggleComplete(id, completed) {
+	await updateDoc(doc(db, "todos", id), {
+		completed: !completed,
+	});
 }
 
-export default App
+export default App;
