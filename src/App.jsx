@@ -13,6 +13,12 @@ import {
 } from "firebase/firestore";
 import "./App.css";
 
+// When you run the app, you'll see a form with an input and a button.
+// The input is where you'll type your todo item, and the button is where
+// you'll add it to the list. The list of todos is displayed below the form.
+
+// Your task is to add the functionality to add, toggle, and delete todos. Goodluck!
+
 function App() {
 	const [todos, setTodos] = useState([]);
 	const [input, setInput] = useState("");
@@ -20,25 +26,17 @@ function App() {
 	async function addTodo(event) {
 		event.preventDefault();
 
-		addDoc(collection(db, "todos"), {
-			todo: input,
-			timestamp: serverTimestamp(),
-			completed: false,
-		});
+		// ... code goes here
 
 		setInput("");
 	}
 
 	async function toggleComplete(id, completed) {
 		// Toggle todo as complete with the given id
-		await updateDoc(doc(db, "todos", id), {
-			completed: !completed,
-		});
 	}
 
 	async function deleteTodo(id) {
 		// Delete the todo with the given id
-		await deleteDoc(doc(db, "todos", id));
 	}
 
 	useEffect(() => {
