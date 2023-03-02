@@ -2,19 +2,22 @@ import { useState, useEffect } from "react";
 import { db } from "./firebase";
 import {
 	collection,
-	getDocs,
 	addDoc,
 	onSnapshot,
 	serverTimestamp,
 	orderBy,
 	query,
+	doc,
+	updateDoc,
+	deleteDoc,
 } from "firebase/firestore";
+import "./App.css";
 
 function App() {
 	const [todos, setTodos] = useState([]);
 	const [input, setInput] = useState("");
 
-	const addTodo = (event) => {
+	async function addTodo(event) {
 		event.preventDefault();
 
 		addDoc(collection(db, "todos"), {
@@ -24,7 +27,19 @@ function App() {
 		});
 
 		setInput("");
-	};
+	}
+
+	async function toggleComplete(id, completed) {
+		// Toggle todo as complete with the given id
+		await updateDoc(doc(db, "todos", id), {
+			completed: !completed,
+		});
+	}
+
+	async function deleteTodo(id) {
+		// Delete the todo with the given id
+		await deleteDoc(doc(db, "todos", id));
+	}
 
 	useEffect(() => {
 		const sortedTodos = query(
@@ -46,36 +61,39 @@ function App() {
 	}, []);
 
 	return (
-		<div>
+		<div className="container">
 			<form>
 				<input
 					value={input}
 					onChange={(event) => setInput(event.target.value)}
+					className="todo-input"
 				/>
-				<button type="submit" onClick={addTodo}>
+				<button type="submit" onClick={addTodo} className="add-todo">
 					Add Todo
 				</button>
 			</form>
 
-			<ul>
+			<ul className="todo-list">
 				{todos.map((todo) => (
 					<li key={todo.id}>
-						<input
-							type="checkbox"
-							checked={todo.completed}
-							onChange={() => toggleComplete(todo.id, todo.completed)}
-						/>
-						{todo.todo}
+						<div>
+							<input
+								type="checkbox"
+								checked={todo.completed}
+								onChange={() => toggleComplete(todo.id, todo.completed)}
+							/>
+							<span className={todo.completed ? "completed" : ""}>
+								{todo.todo}
+							</span>
+						</div>
+						<button onClick={() => deleteTodo(todo.id)} className="delete">
+							Delete
+						</button>
 					</li>
 				))}
 			</ul>
 		</div>
 	);
-}
-async function toggleComplete(id, completed) {
-	await updateDoc(doc(db, "todos", id), {
-		completed: !completed,
-	});
 }
 
 export default App;
