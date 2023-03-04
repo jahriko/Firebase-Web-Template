@@ -4,7 +4,6 @@
 
 ```
 git clone https://github.com/jahriko/Firebase-Web-Template.git
-
 ```
 
 ### Installation
