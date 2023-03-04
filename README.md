@@ -2,7 +2,7 @@
 
 ### Clone the repository
 
-`https://github.com/jahriko/Firebase-Web-Template.git`
+```git clone https://github.com/jahriko/Firebase-Web-Template.git```
 
 ### Installation
 
