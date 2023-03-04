@@ -50,7 +50,7 @@ To learn more of React, head over to https://beta.reactjs.org/learn
 
 ### Firebase for web
 
-- https://firebase.google.com/docs/web/
+- https://firebase.google.com/docs/web
 
 ### Firestore Quickstart
 
