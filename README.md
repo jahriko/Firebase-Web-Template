@@ -9,18 +9,9 @@
 `npm`
 
 ```
-npm install
+> npm install
 
-npm dev
-```
-
-
-`pnpm`
-
-```
-pnpm install
-
-pnpm dev
+> npm dev
 ```
 
 ---
