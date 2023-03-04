@@ -18,11 +18,11 @@ git clone https://github.com/jahriko/Firebase-Web-Template.git
 
 ---
 
-This template uses ReactJS.
+This template provides an already built in todo application and uses ReactJS as the front-end. And we have removed parts of the code for you to fill them out, so you don't have to worry creating from scratch!
 
-This template provides an already built in todo application. But we have removed parts of the code for you to fill them out, so you don't have to worry creating from scratch!
+## ReactJS in a nutshell.
 
-In ReactJS, components are created using functions or classes. Functions are often used to create simple components.
+Components are created using functions or classes. Functions are often used to create simple components.
 
 A function in React is just like a regular JavaScript function, but it returns JSX. JSX is a special syntax that allows you to write HTML-like code inside your JavaScript code.
 
