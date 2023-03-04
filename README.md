@@ -32,7 +32,7 @@ Here's an example of a simple React component created using a function:
 function Greeting() {
   return (
     <div>
-		  <h1>Hello, World!</h1>
+      <h1>Hello, World!</h1>
     </div>
   );
 }
