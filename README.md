@@ -2,7 +2,10 @@
 
 ### Clone the repository
 
-```git clone https://github.com/jahriko/Firebase-Web-Template.git```
+```
+git clone https://github.com/jahriko/Firebase-Web-Template.git
+
+```
 
 ### Installation
 
@@ -15,7 +18,6 @@
 ```
 
 ---
-
 
 This template uses ReactJS.
 
