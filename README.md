@@ -20,7 +20,7 @@ git clone https://github.com/jahriko/Firebase-Web-Template.git
 
 This template provides an already built in todo application and uses ReactJS as the front-end. And we have removed parts of the code for you to fill them out, so you don't have to worry creating from scratch!
 
-## ReactJS in a nutshell.
+## ReactJS in a nutshell
 
 Components are created using functions or classes. Functions are often used to create simple components.
 
@@ -30,11 +30,11 @@ Here's an example of a simple React component created using a function:
 
 ```js
 function Greeting() {
-	return (
-		<div>
-			<h1>Hello, World!</h1>
-		</div>
-	);
+  return (
+    <div>
+		  <h1>Hello, World!</h1>
+    </div>
+  );
 }
 ```
 
