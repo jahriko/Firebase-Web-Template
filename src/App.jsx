@@ -14,6 +14,8 @@ import {
 import "./App.css";
 
 // Your task is to add the functionality to add, toggle, and delete todos. Goodluck!
+// The name of the collection is "todos". You can rename it if you want. 
+// Just make sure to change it in the App.jsx file as well.
 
 function App() {
 	const [todos, setTodos] = useState([]);
@@ -28,11 +30,11 @@ function App() {
 	}
 
 	async function toggleComplete(id, completed) {
-		// Toggle todo as complete with the given id
+		// ... code goes here
 	}
 
 	async function deleteTodo(id) {
-		// Delete the todo with the given id
+		// ... code goes here
 	}
 
 	useEffect(() => {
