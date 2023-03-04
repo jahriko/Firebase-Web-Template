@@ -21,3 +21,23 @@ function Greeting() {
   );
 }
 ```
+
+
+## Hooks
+
+In React, a hook is a special function that allows you to use state and other React features in functional components. It makes it easier to reuse stateful logic between components.
+
+The most commonly used hook is called `useEffect`. It's used for fetching data from APIs, including Firebase. When you want to populate your React application with data from Firebase, you can use the useEffect hook to perform the API call and update your component's state with the data.
+
+
+If you have any questions or have problems setting up the template, raise your hand so that we can see you. Thanks! 
+
+
+Resources:
+
+
+### Firebase for web
+- https://firebase.google.com/docs/web/
+
+### Firestore Quickstart
+- https://firebase.google.com/docs/firestore/quickstart
