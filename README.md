@@ -4,6 +4,27 @@
 
 `https://github.com/jahriko/Firebase-Web-Template.git`
 
+### Installation
+
+`npm`
+
+```
+npm install
+
+npm dev
+```
+
+
+`pnpm`
+
+```
+pnpm install
+
+pnpm dev
+```
+
+---
+
 
 This template uses ReactJS.
 
