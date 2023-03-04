@@ -48,8 +48,6 @@ If you have any questions or have problems setting up the template, raise your h
 
 To learn more of React, head over to https://beta.reactjs.org/learn
 
-Resources:
-
 ### Firebase for web
 
 - https://firebase.google.com/docs/web/
